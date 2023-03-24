@@ -54,3 +54,6 @@ do
     run_dbcan ${fname} protein --out_dir dbcan_results/`basename ${fname}`_output
     #echo ${fname}
 done 
+
+#How to create links to files
+[jupyter notebook](https://sabrinastrath.github.io/si_streptomyces/Looping%20over%20all%20dbcan_results%20for%20heatmap-Copy1.html)
