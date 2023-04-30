@@ -1,59 +1,28 @@
-# si_streptomyces
-All scripts required to run the bioinformatics project. 
-# All scripts needed
-00_install_requirements
-001_downloading_genomes
-_running_dbcan
-_jupyter_notebook
+# **SL *Streptomyces* project**
 
+All scripts required to run the bioinformatics project.
 
-# Reconstruct output
+## Requirements
 
-All scripts were run from the root of this directory.
+* `ncbi-genome-download`
+* `run_dbcan`
 
-## Install requirements
- `ncbi-genome-download`
- `run_dbcan'
- 
- 
-To install all requirements run the following commands from the root of this directory:
+All scripts used to generate the analysis for this project are found in the `scripts/` subdirectory, and can be run in order to regenerate the analysis:
+
 ```bash
-
-scripts/00_install_requirements.sh
+scripts/01_download_genomes.sh
+looping_dbcan.sh
+dbcan_results data tidying and analysis.ipynb
 ```
-pip3 install ncbi_genome_download
-conda install dbcan
-conda activate run_dbcan
 
-00_file_install requirements
-conda create -n run_dbcan python=3.8 dbcan 
-conda install -c conda-forge 
-conda install -c bioconda
+## Directory tree
 
-## Download genomes
+## Reproducing analyses
 
-ncbi-genome-download \
-    --assembly-accessions data/genomic_accessions.txt \
-    --formats fasta \
-    --output-folder data/genomes/genomes \
-    --flat-output \
-    -v \
-    all
+### 1. Download genomes
 
+Genomes were downloaded from NCBI using [`ncbi-genome-download`] 
 
-# Extract sequences
-gunzip data/genomes/genomes/*.gz
+### 2. Run dbCAN to predict CAZyme functions
 
-
-## running_dbcan
-
-mkdir -p ../data/dbcan_results
-
-for fname in ../data/genomes/genomes/GCA*/*.faa #THIS NEEDS TO BE CHANGED TO THE CORRECT FILE PATH
-do
-    run_dbcan ${fname} protein --out_dir dbcan_results/`basename ${fname}`_output
-    #echo ${fname}
-done 
-
-#How to create links to files
-[jupyter notebook](https://sabrinastrath.github.io/si_streptomyces/notebooks/testbook.html)
+### 3. Jupyter notebook to reproduce results analysis
